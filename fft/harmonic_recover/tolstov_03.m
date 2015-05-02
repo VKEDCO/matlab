@@ -1,6 +1,6 @@
 %%% =======================================================================
 %%% Recovering the constituent harmonics from a complex wave of known frequencies. 
-%% The formula is Asin(wx + phi) = 
+%%% The formula is Asin(wx + phi) = 
 %%% A(cos(wx)sin(phi)+sin(wx)cos(phi) =
 %%% acos(wx) + bsin(wx), where a = Asin(phi) and b = Acos(phi), p. 5.
 %%% The recovered harmonics are put back together to see how well
@@ -27,8 +27,10 @@ a1 = -4;
 a2 = 1;
 a3 = -4/9.0;
 
+%A = pi^2/3;
+A = pi^2/3;
 y1 = arrayfun(@(x) b1*sin(w1*x)+b2*sin(w2*x)+b3*sin(w3*x), x);
-y2 = arrayfun(@(x) (pi^2)/3 + a1*cos(w1*x)+a2*cos(w2*x)+a3*cos(w3*x), x);
+y2 = arrayfun(@(x) A + a1*cos(w1*x)+a2*cos(w2*x)+a3*cos(w3*x), x);
 y = y1+y2;
 
 figure(1);
@@ -65,18 +67,18 @@ title('y = y1 + y2');
 
 aa0 = 1/pi*sum(y.*cos(0*x));
 aa0 = aa0*DELTA;
-aa1 = 1/pi*sum(y.*cos(1*x));
+aa1 = 1/pi*sum(y.*cos(w1*x));
 aa1 = aa1*DELTA;
-aa2 = 1/pi*sum(y.*cos(2*x));
+aa2 = 1/pi*sum(y.*cos(w2*x));
 aa2 = aa2*DELTA;
-aa3 = 1/pi*sum(y.*cos(3*x));
+aa3 = 1/pi*sum(y.*cos(w3*x));
 aa3 = aa3*DELTA;
 
-ab1 = 1/pi*sum(y.*sin(1*x));
+ab1 = 1/pi*sum(y.*sin(w1*x));
 ab1 = ab1*DELTA;
-ab2 = 1/pi*sum(y.*sin(2*x));
+ab2 = 1/pi*sum(y.*sin(w2*x));
 ab2 = ab2*DELTA;
-ab3 = 1/pi*sum(y.*sin(3*x));
+ab3 = 1/pi*sum(y.*sin(w3*x));
 ab3 = ab3*DELTA;
 
 %% y consists of three harmonics:
@@ -91,7 +93,9 @@ sin_phi1 = asin(aa1/A1); %% this is what we should use.
 cos_phi1 = acos(ab1/A1); %% this is negative
 
 %% two different formulas for h1
-h1 = aa1*cos(w1*x) + ab1*sin(w1*x);
+h1_cos = aa1*cos(w1*x);
+h1_sin = ab1*sin(w1*x);
+h1 = h1_cos + h1_sin;
 hh1 = A1*sin(w1*x + sin_phi1);
 
 %% plot h1
@@ -106,15 +110,17 @@ figure;
 plot(x, hh1);
 xlabel('x');
 ylabel('hh1');
-title('hh1 = A1*sin(w1*x + phi1');
+title('hh1 = A1*sin(w1*x + phi1)');
 
 %% =============== Recovering HARMONIC 2 ============
 A2 = sqrt(aa2^2 + ab2^2);
 sin_phi2 = asin(aa2/A2); %% this is what we should use.
-cos_phi1 = acos(ab2/A2);
+cos_phi2 = acos(ab2/A2);
 
 %% two different formulas for h2
-h2 = aa2*cos(w2*x) + ab2*sin(w2*x);
+h2_cos = aa2*cos(w2*x);
+h2_sin = ab2*sin(w2*x);
+h2 = h2_cos + h2_sin;
 hh2 = A2*sin(w2*x + sin_phi2);
 
 figure;
@@ -135,7 +141,9 @@ sin_phi3 = asin(aa3/A3); %% this is what we should use.
 cos_phi3 = acos(ab3/A3);
 
 %% two different formulas for h3
-h3 = aa3*cos(w3*x) + ab3*sin(w3*x);
+h3_cos = aa3*cos(w3*x);
+h3_sin = ab3*sin(w3*x);
+h3 = h3_cos + h3_sin;
 hh3 = A3*sin(w3*x + sin_phi3);
 
 figure;
@@ -151,20 +159,20 @@ ylabel('hh3');
 title('hh3 = A3*sin(w3*x + phi3)');
 
 %% ============ Recombining Recovered Harmonics =========================
-yh = aa0/2 + h1 + h2 + h2;
-
-figure;
-plot(x, yh);
-xlabel('x');
-ylabel('yh');
-title('yh = aa0/2+h1+h2+h3');
-
-yh2 = aa0/2 + hh1 + hh2 + hh3;
+yh1 = aa0/2 + h1 + h2 + h2;
 
 figure;
 plot(x, yh1);
 xlabel('x');
 ylabel('yh1');
-title('yh1 = aa0/2+hh1+hh2+hh3');
+title('yh1 = h1+h2+h3');
+
+yh2 = aa0/2 + hh1 + hh2 + hh3;
+
+figure;
+plot(x, yh2);
+xlabel('x');
+ylabel('yh2');
+title('yh2 = hh1+hh2+hh3');
 
 %% end of file
