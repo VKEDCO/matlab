@@ -1,7 +1,7 @@
 %%% =======================================================================
 %%% Recovering the constituent harmonics from a complex wave of known 
 %%% frequencies. The formula is Asin(wx + phi) = A(cos(wx)sin(phi)+sin(wx)cos(phi) =
-%%% acos(wx) + bsin(wx), where a = Asin(phi) and b = Acos(phi), p. 5.
+%%% acos(wx) + bsin(wx), where a = Asin(phi) and b = Acos(phi).
 %%% The recovered harmonics are put back together to see how well
 %%% they model the original wave. The graphs indicate that the
 %%% harmonics of the form Asin(wx+phi) sometimes model the original wave
@@ -25,10 +25,12 @@ b3 = 15;
 b4 = 20;
 b5 = 25;
 
+A = 0;
+
 %% combined sinusoid
 y = arrayfun(@(x) b5*sin(5*x)+b4*sin(4*x)+b3*sin(3*x)+b2*sin(2*x)+b1*sin(1*x), x);
 
-figure(1);
+figure;
 plot(x, y);
 xlabel('x');
 ylabel('y');
@@ -226,16 +228,26 @@ title('hh5 = A5*sin(5*x+phi5)');
 
 %% ============== Recombining Harmonics ==============================
 
-yh = h1 + h2 + h3 + h4 + h5;
-figure;
-plot(x, yh);
-xlabel('x');
-ylabel('yh');
-title('yh = h1+h2+h3+h4+h5');
+yh1 = h1 + h2 + h3 + h4 + h5;
 
-yhh = hh1+hh2+hh3+hh4+hh5;
 figure;
-plot(x, yhh);
+plot(x, yh1);
 xlabel('x');
-ylabel('yhh');
-title('yhh=hh1+hh2+hh3+hh4+hh5');
+ylabel('yh1');
+title('yh1 = h1+h2+h3+h4+h5');
+
+yh2 = hh1+hh2+hh3+hh4+hh5;
+
+figure;
+plot(x, yh2);
+xlabel('x');
+ylabel('yh2');
+title('yh2=hh1+hh2+hh3+hh4+hh5');
+
+percent_error_yh1 = sum(abs(abs(yh1) - abs(y)))/sum(abs(y));
+percent_error_yh2 = sum(abs(abs(yh2) - abs(y)))/sum(abs(y));
+disp(strcat('A=', num2str(A)));
+disp(strcat('%error(y,yh1)=', num2str(percent_error_yh1)));
+disp(strcat('%error(y,yh2)=', num2str(percent_error_yh2)));
+
+%% end of file
