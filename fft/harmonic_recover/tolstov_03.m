@@ -1,12 +1,14 @@
 %%% =======================================================================
 %%% Recovering the constituent harmonics from a complex wave of known frequencies. 
-%%% The formula is Asin(wx + phi) = 
+%%% The formula is A*sin(wx + phi) = 
 %%% A(cos(wx)sin(phi)+sin(wx)cos(phi) =
 %%% acos(wx) + bsin(wx), where a = Asin(phi) and b = Acos(phi), p. 5.
 %%% The recovered harmonics are put back together to see how well
 %%% they model the original wave. The graphs indicate that the
 %%% harmonics of the form Asin(wx+phi) sometimes model the original wave
 %%% better than the harmonics of the form acos(wx)+bsin(wx).
+%%% 
+%%% Various values of A are tested.
 %%% 
 %%% Author: Vladimir Kulyukin
 %%% =======================================================================
@@ -27,17 +29,17 @@ a1 = -4;
 a2 = 1;
 a3 = -4/9.0;
 
-%A = pi^2/3;
-A = pi^2/3;
+% Set A = 0, pi/2, pi/3, pi/4, p^2/3
+A = (pi^2)/3;
 y1 = arrayfun(@(x) b1*sin(w1*x)+b2*sin(w2*x)+b3*sin(w3*x), x);
 y2 = arrayfun(@(x) A + a1*cos(w1*x)+a2*cos(w2*x)+a3*cos(w3*x), x);
 y = y1+y2;
 
-figure(1);
+figure;
 plot(x, y);
 xlabel('x');
 ylabel('y');
-title('y = y1 + y2');
+title('y = y1+y2');
 
 %%% Recovering a0, a1, a2, a3, b1, b2, b3
 %%%
@@ -174,5 +176,33 @@ plot(x, yh2);
 xlabel('x');
 ylabel('yh2');
 title('yh2 = hh1+hh2+hh3');
+
+%% These are the outputs for various values of A. It looks like
+%% as the values of A gets smaller the percent error becomes smaller
+%% A=0.7854
+%% %error(y1,yh1)=3.3731
+%% %error(y1,yh2)=3.1302
+
+%% A=0.62832
+%% %error(y1,yh1)=3.3114
+%% %error(y1,yh2)=3.1086
+
+%% A=0
+%% %error(y1,yh1)=3.1629
+%% %error(y1,yh2)=2.9974
+
+%% A=1.0472
+%% %error(y1,yh1)=3.4808
+%% %error(y1,yh2)=3.1652
+
+%% A=3.2899
+%% %error(y1,yh1)=4.4762
+%% %error(y1,yh2)=4.3951
+percent_error_yh1 = sum(abs(abs(yh1) - abs(y1)))/sum(abs(y1));
+percent_error_yh2 = sum(abs(abs(yh2) - abs(y1)))/sum(abs(y1));
+disp(strcat('A=', num2str(A)));
+disp(strcat('%error(y1,yh1)=', num2str(percent_error_yh1)));
+disp(strcat('%error(y1,yh2)=', num2str(percent_error_yh2)));
+
 
 %% end of file
