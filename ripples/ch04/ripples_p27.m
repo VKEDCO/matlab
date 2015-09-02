@@ -11,11 +11,12 @@
 %%
 %% The numbers below were computed by my Java OneDHaar class methods
 %% available at https://github.com/VKEDCO/java/blob/master/haar/org.vkedco.wavelets.haar/OneDHaar.java
+%% and https://github.com/VKEDCO/java/blob/master/haar/org.vkedco.wavelets.tests/RipplesInMathCh04.java
 %% =========================================================================
 
 t = [0:511];
 
-y_fig43a_p27 = [
+y_fig_4_3_d8_p27 = [
 -0.017353269107199996
 -0.017321916522383546
 -0.017248833923443972
@@ -276,11 +277,11 @@ y_fig43a_p27 = [
 
 
 figure;
-plot(0:1:255, y_fig43a_p27);
-title("D8: Fig 4.3a, p. 27 in Ripples");
+plot(0:1:255, y_fig_4_3_d8_p27);
+title("D8: Fig 4.3, d8, p. 27 in Ripples");
 xlim([0 255]);
 
-y_fig43b_p27 = [
+y_fig_4_3_d7_p27 = [
 -0.04904550470208658
 -0.04863227384344307
 -0.047750687602582144
@@ -412,11 +413,11 @@ y_fig43b_p27 = [
 ];
 
 figure;
-plot(0:1:127, y_fig43b_p27);
-title("D7: Fig 4.3b, p. 27 in Ripples");
+plot(0:1:127, y_fig_4_3_d7_p27);
+title("D7: Fig 4.3, d7, p. 27 in Ripples");
 xlim([0 127]);
 
-y_fig43c_p27 = [
+y_fig_4_3_d6_p27 = [
 -0.1382205356729931
 -0.13324253778085945
 -0.12314410388508332
@@ -484,11 +485,11 @@ y_fig43c_p27 = [
 ];
 
 figure;
-plot(0:1:63, y_fig43c_p27);
-title("D6: Fig 4.3c, p. 27 in Ripples");
+plot(0:1:63, y_fig_4_3_d6_p27);
+title("D6: Fig 4.3, d6, p. 27 in Ripples");
 xlim([0 63]);
 
-y_fig43d_p27 = [
+y_fig_4_3_s6_p27 = [
 0.24228789181051738
 0.7865275324466248
 1.30054136110053
@@ -556,6 +557,6 @@ y_fig43d_p27 = [
 ];
 
 figure;
-plot(0:1:63, y_fig43d_p27);
-title("S6: Fig 4.3d, p. 27 in Ripples");
+plot(0:1:63, y_fig_4_3_s6_p27);
+title("S6: Fig 4.3, s6, p. 27 in Ripples");
 xlim([0 63]);
