@@ -8,8 +8,6 @@
 %% Author: Vladimir Kulyukin
 %% 
 %% NB: I have tested this code in Octave, not Matlab.
-%% The numbers in the arrays below were computed by the code at
-%% https://github.com/VKEDCO/java/blob/master/haar/org.vkedco.wavelets.tests/RipplesInMathCh04.java
 %% =========================================================================
 
 t = [0:511];
