@@ -560,3 +560,32 @@ figure;
 plot(0:1:63, y_fig_4_3_s6_p27);
 title("S6: Fig 4.3, s6, p. 27 in Ripples");
 xlim([0 63]);
+
+figure;
+plot(0:1:63, y_fig_4_3_s6_p27);
+title("S6: Fig 4.3, s6, p. 27 in Ripples");
+xlim([0 63]);
+
+figure;
+subplot(4, 1, 1);
+plot(0:1:255, y_fig_4_3_d8_p27);
+xlim([0 255]);
+
+legend('d8', 'location', 'north');
+subplot(4, 1, 2);
+plot(0:1:127, y_fig_4_3_d7_p27);
+xlim([0 127]);
+
+legend('d7', 'location', 'north');
+subplot(4, 1, 3);
+plot(0:1:63, y_fig_4_3_d6_p27);
+xlim([0 63]);
+
+legend('d6', 'location', 'north');
+subplot(4, 1, 4);
+plot(0:1:63, y_fig_4_3_s6_p27);
+xlim([0 63]);
+
+legend('s6', 'location', 'north');
+title('Fig. 4.3. The wavelet coefficients from Fig. 4.2.');
+
