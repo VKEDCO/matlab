@@ -3,7 +3,7 @@
 %% and A. la Cour-Harbo written with a deep gratitude to the authors for
 %% this wonderful text. 
 %% 
-%% Reconstruction of graphs in Figure 4.15, top, p.35, Ch 04, S6.
+%% Reconstruction of graphs in Figure 4.15, p.35, Ch 04, S6.
 %%
 %% Author: Vladimir Kulyukin
 %% 
