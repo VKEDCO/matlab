@@ -531,4 +531,4 @@ y_ex_4_3_chirp_HWT_D5_512_p33 = [
 figure;
 plot(t, y_ex_4_3_chirp_HWT_D5_512_p33);
 xlim([0 511]);
-title('Ex. 4.3, p. 33, chirp 512, HWT, D5');
+title('Ex. 4.3, p. 33, chirp 512, HWT, D5, 4 scales');
