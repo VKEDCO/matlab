@@ -3,7 +3,7 @@
 %% and A. la Cour-Harbo written with a deep gratitude to the authors for
 %% this wonderful text. 
 %% 
-%% Reconstruction of graphs in ex 4.3, p.33, HWT, 3 scales, D7.
+%% Reconstruction of graphs in ex 4.3, p.33, HWT, 4 scales, D7.
 %%
 %% Author: Vladimir Kulyukin
 %% 
@@ -531,4 +531,4 @@ y_ex_4_3_chirp_HWT_D7_512_p33 = [
 figure;
 plot(t, y_ex_4_3_chirp_HWT_D7_512_p33);
 xlim([0 511]);
-title('Ex. 4.3, p. 33, chirp 512, HWT, D7');
+title('Ex. 4.3, p. 33, chirp 512, HWT, D7, 4 scales');
