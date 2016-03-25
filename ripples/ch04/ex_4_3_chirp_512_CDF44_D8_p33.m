@@ -3,7 +3,7 @@
 %% and A. la Cour-Harbo written with a deep gratitude to the authors for
 %% this wonderful text. 
 %% 
-%% Reconstruction of graphs in ex. 4.3, p.33, CDF44, D8.
+%% Reconstruction of graphs in ex. 4.3, p.33, CDF44, D8, 4 scales
 %%
 %% Author: Vladimir Kulyukin
 %% 
@@ -13,7 +13,7 @@ t = [0:511];
 
 %%y_ex_4_3_chirp_512_p33 = arrayfun(@(x) sin(x*x), t);
 
-y_ex_4_3_chirp_D4_D8_512_p33 = [
+y_ex_4_3_chirp_D8_512_p33 = [
 -0.1334273592266622
 0.3820869929002179
 -0.831679572040026
@@ -529,6 +529,6 @@ y_ex_4_3_chirp_D4_D8_512_p33 = [
 ];
 
 figure;
-plot(t, y_ex_4_3_chirp_D4_D8_512_p33);
+plot(t, y_ex_4_3_chirp_D8_512_p33);
 xlim([0 511]);
-title('Ex. 4.3, p. 33, chirp 512, S06-D06-D07-D8');
+title('Ex. 4.3, p. 33, chirp 512, CDF44, D8, 4 scales');
